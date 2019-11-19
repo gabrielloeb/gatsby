@@ -88,7 +88,7 @@ const hasIOSupport = isBrowser && window.IntersectionObserver
 let io
 const listeners = new WeakMap()
 
-function getIO() {
+function getIO(rm) {
   if (
     typeof io === `undefined` &&
     typeof window !== `undefined` &&
@@ -108,7 +108,7 @@ function getIO() {
           }
         })
       },
-      { rootMargin: `200px` }
+      { rootMargin: rm || `200px` }
     )
   }
 
@@ -180,8 +180,8 @@ function generateNoscriptSources(imageVariants) {
     .join(``)
 }
 
-const listenToIntersections = (el, cb) => {
-  const observer = getIO()
+const listenToIntersections = (el, cb, rm) => {
+  const observer = getIO(rm)
 
   if (observer) {
     observer.observe(el)
@@ -273,6 +273,7 @@ Img.propTypes = {
   style: PropTypes.object,
   onError: PropTypes.func,
   onLoad: PropTypes.func,
+  rootMargin: PropTypes.string,
 }
 
 class Image extends React.Component {
@@ -350,7 +351,7 @@ class Image extends React.Component {
             imgCached: !!this.imageRef.current.currentSrc,
           })
         )
-      })
+      }, rootMargin)
     }
   }
 
