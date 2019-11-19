@@ -330,28 +330,32 @@ class Image extends React.Component {
   // Specific to IntersectionObserver based lazy-load support
   handleRef(ref) {
     if (this.useIOSupport && ref) {
-      this.cleanUpListeners = listenToIntersections(ref, () => {
-        const imageInCache = inImageCache(this.props)
-        if (
-          !this.state.isVisible &&
-          typeof this.props.onStartLoad === `function`
-        ) {
-          this.props.onStartLoad({ wasCached: imageInCache })
-        }
+      this.cleanUpListeners = listenToIntersections(
+        ref,
+        () => {
+          const imageInCache = inImageCache(this.props)
+          if (
+            !this.state.isVisible &&
+            typeof this.props.onStartLoad === `function`
+          ) {
+            this.props.onStartLoad({ wasCached: imageInCache })
+          }
 
-        // imgCached and imgLoaded must update after isVisible,
-        // Once isVisible is true, imageRef becomes accessible, which imgCached needs access to.
-        // imgLoaded and imgCached are in a 2nd setState call to be changed together,
-        // avoiding initiating unnecessary animation frames from style changes.
-        this.setState({ isVisible: true }, () =>
-          this.setState({
-            imgLoaded: imageInCache,
-            // `currentSrc` should be a string, but can be `undefined` in IE,
-            // !! operator validates the value is not undefined/null/""
-            imgCached: !!this.imageRef.current.currentSrc,
-          })
-        )
-      }, rootMargin)
+          // imgCached and imgLoaded must update after isVisible,
+          // Once isVisible is true, imageRef becomes accessible, which imgCached needs access to.
+          // imgLoaded and imgCached are in a 2nd setState call to be changed together,
+          // avoiding initiating unnecessary animation frames from style changes.
+          this.setState({ isVisible: true }, () =>
+            this.setState({
+              imgLoaded: imageInCache,
+              // `currentSrc` should be a string, but can be `undefined` in IE,
+              // !! operator validates the value is not undefined/null/""
+              imgCached: !!this.imageRef.current.currentSrc,
+            })
+          )
+        },
+        this.props.rootMargin
+      )
     }
   }
 
