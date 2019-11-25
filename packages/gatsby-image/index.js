@@ -3,7 +3,7 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 exports.__esModule = true;
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 
@@ -16,8 +16,6 @@ var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends")
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _jsxFileName = "/Users/g/Code/gatsby/packages/gatsby-image/src/index.js";
 
 var logDeprecationNotice = function logDeprecationNotice(prop, replacement) {
   if (process.env.NODE_ENV === "production") {
@@ -33,7 +31,7 @@ var logDeprecationNotice = function logDeprecationNotice(prop, replacement) {
 
 
 var convertProps = function convertProps(props) {
-  var convertedProps = (0, _extends2.default)({}, props);
+  var convertedProps = (0, _extends2["default"])({}, props);
   var resolutions = convertedProps.resolutions,
       sizes = convertedProps.sizes,
       critical = convertedProps.critical;
@@ -113,7 +111,7 @@ function getIO(rm) {
 
           if (entry.isIntersecting || entry.intersectionRatio > 0) {
             io.unobserve(entry.target);
-            listeners.delete(entry.target);
+            listeners["delete"](entry.target);
             cb();
           }
         }
@@ -133,32 +131,17 @@ function generateImageSources(imageVariants) {
         srcSetWebp = _ref2.srcSetWebp,
         media = _ref2.media,
         sizes = _ref2.sizes;
-    return _react.default.createElement(_react.default.Fragment, {
-      key: src,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 120
-      },
-      __self: this
-    }, srcSetWebp && _react.default.createElement("source", {
+    return _react["default"].createElement(_react["default"].Fragment, {
+      key: src
+    }, srcSetWebp && _react["default"].createElement("source", {
       type: "image/webp",
       media: media,
       srcSet: srcSetWebp,
-      sizes: sizes,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 122
-      },
-      __self: this
-    }), _react.default.createElement("source", {
+      sizes: sizes
+    }), _react["default"].createElement("source", {
       media: media,
       srcSet: srcSet,
-      sizes: sizes,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 129
-      },
-      __self: this
+      sizes: sizes
     }));
   });
 } // Return an array ordered by elements having a media prop, does not use
@@ -184,15 +167,10 @@ function generateTracedSVGSources(imageVariants) {
     var src = _ref3.src,
         media = _ref3.media,
         tracedSVG = _ref3.tracedSVG;
-    return _react.default.createElement("source", {
+    return _react["default"].createElement("source", {
       key: src,
       media: media,
-      srcSet: tracedSVG,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 154
-      },
-      __self: this
+      srcSet: tracedSVG
     });
   });
 }
@@ -202,15 +180,10 @@ function generateBase64Sources(imageVariants) {
     var src = _ref4.src,
         media = _ref4.media,
         base64 = _ref4.base64;
-    return _react.default.createElement("source", {
+    return _react["default"].createElement("source", {
       key: src,
       media: media,
-      srcSet: base64,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 160
-      },
-      __self: this
+      srcSet: base64
     });
   });
 }
@@ -243,7 +216,7 @@ var listenToIntersections = function listenToIntersections(el, cb, rm) {
 
   return function () {
     observer.unobserve(el);
-    listeners.delete(el);
+    listeners["delete"](el);
   };
 };
 
@@ -275,26 +248,14 @@ var Placeholder = function Placeholder(_ref6) {
       generateSources = _ref6.generateSources,
       spreadProps = _ref6.spreadProps;
 
-  var baseImage = _react.default.createElement(Img, (0, _extends2.default)({
+  var baseImage = _react["default"].createElement(Img, (0, _extends2["default"])({
     src: src
-  }, spreadProps, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 222
-    },
-    __self: this
-  }));
+  }, spreadProps));
 
-  return imageVariants.length > 1 ? _react.default.createElement("picture", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 225
-    },
-    __self: this
-  }, generateSources(imageVariants), baseImage) : baseImage;
+  return imageVariants.length > 1 ? _react["default"].createElement("picture", null, generateSources(imageVariants), baseImage) : baseImage;
 };
 
-var Img = _react.default.forwardRef(function (props, ref) {
+var Img = _react["default"].forwardRef(function (props, ref) {
   var sizes = props.sizes,
       srcSet = props.srcSet,
       src = props.src,
@@ -303,8 +264,8 @@ var Img = _react.default.forwardRef(function (props, ref) {
       onError = props.onError,
       loading = props.loading,
       draggable = props.draggable,
-      otherProps = (0, _objectWithoutPropertiesLoose2.default)(props, ["sizes", "srcSet", "src", "style", "onLoad", "onError", "loading", "draggable"]);
-  return _react.default.createElement("img", (0, _extends2.default)({
+      otherProps = (0, _objectWithoutPropertiesLoose2["default"])(props, ["sizes", "srcSet", "src", "style", "onLoad", "onError", "loading", "draggable"]);
+  return _react["default"].createElement("img", (0, _extends2["default"])({
     sizes: sizes,
     srcSet: srcSet,
     src: src
@@ -314,7 +275,7 @@ var Img = _react.default.forwardRef(function (props, ref) {
     ref: ref,
     loading: loading,
     draggable: draggable,
-    style: (0, _extends2.default)({
+    style: (0, _extends2["default"])({
       position: "absolute",
       top: 0,
       left: 0,
@@ -322,26 +283,21 @@ var Img = _react.default.forwardRef(function (props, ref) {
       height: "100%",
       objectFit: "cover",
       objectPosition: "center"
-    }, style),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 248
-    },
-    __self: this
+    }, style)
   }));
 });
 
 Img.propTypes = {
-  style: _propTypes.default.object,
-  onError: _propTypes.default.func,
-  onLoad: _propTypes.default.func,
-  rootMargin: _propTypes.default.string
+  style: _propTypes["default"].object,
+  onError: _propTypes["default"].func,
+  onLoad: _propTypes["default"].func,
+  rootMargin: _propTypes["default"].string
 };
 
 var Image =
 /*#__PURE__*/
 function (_React$Component) {
-  (0, _inheritsLoose2.default)(Image, _React$Component);
+  (0, _inheritsLoose2["default"])(Image, _React$Component);
 
   function Image(props) {
     var _this;
@@ -360,9 +316,9 @@ function (_React$Component) {
       imgCached: false,
       fadeIn: !_this.seenBefore && props.fadeIn
     };
-    _this.imageRef = _react.default.createRef();
-    _this.handleImageLoaded = _this.handleImageLoaded.bind((0, _assertThisInitialized2.default)(_this));
-    _this.handleRef = _this.handleRef.bind((0, _assertThisInitialized2.default)(_this));
+    _this.imageRef = _react["default"].createRef();
+    _this.handleImageLoaded = _this.handleImageLoaded.bind((0, _assertThisInitialized2["default"])(_this));
+    _this.handleRef = _this.handleRef.bind((0, _assertThisInitialized2["default"])(_this));
     return _this;
   }
 
@@ -456,7 +412,7 @@ function (_React$Component) {
 
     var shouldReveal = this.state.fadeIn === false || this.state.imgLoaded;
     var shouldFadeIn = this.state.fadeIn === true && !this.state.imgCached;
-    var imageStyle = (0, _extends2.default)({
+    var imageStyle = (0, _extends2["default"])({
       opacity: shouldReveal ? 1 : 0,
       transition: shouldFadeIn ? "opacity " + durationFadeIn + "ms" : "none"
     }, imgStyle);
@@ -464,7 +420,7 @@ function (_React$Component) {
     var delayHideStyle = {
       transitionDelay: durationFadeIn + "ms"
     };
-    var imagePlaceholderStyle = (0, _extends2.default)({
+    var imagePlaceholderStyle = (0, _extends2["default"])({
       opacity: this.state.imgLoaded ? 0 : 1
     }, shouldFadeIn && delayHideStyle, {}, imgStyle, {}, placeholderStyle);
     var placeholderImageProps = {
@@ -478,32 +434,22 @@ function (_React$Component) {
     if (fluid) {
       var imageVariants = fluid;
       var image = imageVariants[0];
-      return _react.default.createElement(Tag, {
+      return _react["default"].createElement(Tag, {
         className: (className ? className : "") + " gatsby-image-wrapper",
-        style: (0, _extends2.default)({
+        style: (0, _extends2["default"])({
           position: "relative",
           overflow: "hidden"
         }, style),
         ref: this.handleRef,
-        key: "fluid-" + JSON.stringify(image.srcSet),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 427
-        },
-        __self: this
-      }, _react.default.createElement(Tag, {
+        key: "fluid-" + JSON.stringify(image.srcSet)
+      }, _react["default"].createElement(Tag, {
         style: {
           width: "100%",
           paddingBottom: 100 / image.aspectRatio + "%"
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 438
-        },
-        __self: this
-      }), bgColor && _react.default.createElement(Tag, {
+        }
+      }), bgColor && _react["default"].createElement(Tag, {
         title: title,
-        style: (0, _extends2.default)({
+        style: (0, _extends2["default"])({
           backgroundColor: bgColor,
           position: "absolute",
           top: 0,
@@ -511,39 +457,18 @@ function (_React$Component) {
           opacity: !this.state.imgLoaded ? 1 : 0,
           right: 0,
           left: 0
-        }, shouldFadeIn && delayHideStyle),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 447
-        },
-        __self: this
-      }), image.base64 && _react.default.createElement(Placeholder, {
+        }, shouldFadeIn && delayHideStyle)
+      }), image.base64 && _react["default"].createElement(Placeholder, {
         src: image.base64,
         spreadProps: placeholderImageProps,
         imageVariants: imageVariants,
-        generateSources: generateBase64Sources,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 464
-        },
-        __self: this
-      }), image.tracedSVG && _react.default.createElement(Placeholder, {
+        generateSources: generateBase64Sources
+      }), image.tracedSVG && _react["default"].createElement(Placeholder, {
         src: image.tracedSVG,
         spreadProps: placeholderImageProps,
         imageVariants: imageVariants,
-        generateSources: generateTracedSVGSources,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 474
-        },
-        __self: this
-      }), this.state.isVisible && _react.default.createElement("picture", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 484
-        },
-        __self: this
-      }, generateImageSources(imageVariants), _react.default.createElement(Img, {
+        generateSources: generateTracedSVGSources
+      }), this.state.isVisible && _react["default"].createElement("picture", null, generateImageSources(imageVariants), _react["default"].createElement(Img, {
         alt: alt,
         title: title,
         sizes: image.sizes,
@@ -556,34 +481,24 @@ function (_React$Component) {
         onError: this.props.onError,
         itemProp: itemProp,
         loading: loading,
-        draggable: draggable,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 486
-        },
-        __self: this
-      })), this.addNoScript && _react.default.createElement("noscript", {
+        draggable: draggable
+      })), this.addNoScript && _react["default"].createElement("noscript", {
         dangerouslySetInnerHTML: {
-          __html: noscriptImg((0, _extends2.default)({
+          __html: noscriptImg((0, _extends2["default"])({
             alt: alt,
             title: title,
             loading: loading
           }, image, {
             imageVariants: imageVariants
           }))
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 506
-        },
-        __self: this
+        }
       }));
     }
 
     if (fixed) {
       var _imageVariants = fixed;
       var _image = _imageVariants[0];
-      var divStyle = (0, _extends2.default)({
+      var divStyle = (0, _extends2["default"])({
         position: "relative",
         overflow: "hidden",
         display: "inline-block",
@@ -595,56 +510,30 @@ function (_React$Component) {
         delete divStyle.display;
       }
 
-      return _react.default.createElement(Tag, {
+      return _react["default"].createElement(Tag, {
         className: (className ? className : "") + " gatsby-image-wrapper",
         style: divStyle,
         ref: this.handleRef,
-        key: "fixed-" + JSON.stringify(_image.srcSet),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 540
-        },
-        __self: this
-      }, bgColor && _react.default.createElement(Tag, {
+        key: "fixed-" + JSON.stringify(_image.srcSet)
+      }, bgColor && _react["default"].createElement(Tag, {
         title: title,
-        style: (0, _extends2.default)({
+        style: (0, _extends2["default"])({
           backgroundColor: bgColor,
           width: _image.width,
           opacity: !this.state.imgLoaded ? 1 : 0,
           height: _image.height
-        }, shouldFadeIn && delayHideStyle),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 548
-        },
-        __self: this
-      }), _image.base64 && _react.default.createElement(Placeholder, {
+        }, shouldFadeIn && delayHideStyle)
+      }), _image.base64 && _react["default"].createElement(Placeholder, {
         src: _image.base64,
         spreadProps: placeholderImageProps,
         imageVariants: _imageVariants,
-        generateSources: generateBase64Sources,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 562
-        },
-        __self: this
-      }), _image.tracedSVG && _react.default.createElement(Placeholder, {
+        generateSources: generateBase64Sources
+      }), _image.tracedSVG && _react["default"].createElement(Placeholder, {
         src: _image.tracedSVG,
         spreadProps: placeholderImageProps,
         imageVariants: _imageVariants,
-        generateSources: generateTracedSVGSources,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 572
-        },
-        __self: this
-      }), this.state.isVisible && _react.default.createElement("picture", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 582
-        },
-        __self: this
-      }, generateImageSources(_imageVariants), _react.default.createElement(Img, {
+        generateSources: generateTracedSVGSources
+      }), this.state.isVisible && _react["default"].createElement("picture", null, generateImageSources(_imageVariants), _react["default"].createElement(Img, {
         alt: alt,
         title: title,
         width: _image.width,
@@ -659,27 +548,17 @@ function (_React$Component) {
         onError: this.props.onError,
         itemProp: itemProp,
         loading: loading,
-        draggable: draggable,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 584
-        },
-        __self: this
-      })), this.addNoScript && _react.default.createElement("noscript", {
+        draggable: draggable
+      })), this.addNoScript && _react["default"].createElement("noscript", {
         dangerouslySetInnerHTML: {
-          __html: noscriptImg((0, _extends2.default)({
+          __html: noscriptImg((0, _extends2["default"])({
             alt: alt,
             title: title,
             loading: loading
           }, _image, {
             imageVariants: _imageVariants
           }))
-        },
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 606
-        },
-        __self: this
+        }
       }));
     }
 
@@ -687,7 +566,7 @@ function (_React$Component) {
   };
 
   return Image;
-}(_react.default.Component);
+}(_react["default"].Component);
 
 Image.defaultProps = {
   fadeIn: true,
@@ -699,28 +578,28 @@ Image.defaultProps = {
   loading: "lazy"
 };
 
-var fixedObject = _propTypes.default.shape({
-  width: _propTypes.default.number.isRequired,
-  height: _propTypes.default.number.isRequired,
-  src: _propTypes.default.string.isRequired,
-  srcSet: _propTypes.default.string.isRequired,
-  base64: _propTypes.default.string,
-  tracedSVG: _propTypes.default.string,
-  srcWebp: _propTypes.default.string,
-  srcSetWebp: _propTypes.default.string,
-  media: _propTypes.default.string
+var fixedObject = _propTypes["default"].shape({
+  width: _propTypes["default"].number.isRequired,
+  height: _propTypes["default"].number.isRequired,
+  src: _propTypes["default"].string.isRequired,
+  srcSet: _propTypes["default"].string.isRequired,
+  base64: _propTypes["default"].string,
+  tracedSVG: _propTypes["default"].string,
+  srcWebp: _propTypes["default"].string,
+  srcSetWebp: _propTypes["default"].string,
+  media: _propTypes["default"].string
 });
 
-var fluidObject = _propTypes.default.shape({
-  aspectRatio: _propTypes.default.number.isRequired,
-  src: _propTypes.default.string.isRequired,
-  srcSet: _propTypes.default.string.isRequired,
-  sizes: _propTypes.default.string.isRequired,
-  base64: _propTypes.default.string,
-  tracedSVG: _propTypes.default.string,
-  srcWebp: _propTypes.default.string,
-  srcSetWebp: _propTypes.default.string,
-  media: _propTypes.default.string
+var fluidObject = _propTypes["default"].shape({
+  aspectRatio: _propTypes["default"].number.isRequired,
+  src: _propTypes["default"].string.isRequired,
+  srcSet: _propTypes["default"].string.isRequired,
+  sizes: _propTypes["default"].string.isRequired,
+  base64: _propTypes["default"].string,
+  tracedSVG: _propTypes["default"].string,
+  srcWebp: _propTypes["default"].string,
+  srcSetWebp: _propTypes["default"].string,
+  media: _propTypes["default"].string
 }); // If you modify these propTypes, please don't forget to update following files as well:
 // https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-image/index.d.ts
 // https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-image/README.md#gatsby-image-props
@@ -730,28 +609,28 @@ var fluidObject = _propTypes.default.shape({
 Image.propTypes = {
   resolutions: fixedObject,
   sizes: fluidObject,
-  fixed: _propTypes.default.oneOfType([fixedObject, _propTypes.default.arrayOf(fixedObject)]),
-  fluid: _propTypes.default.oneOfType([fluidObject, _propTypes.default.arrayOf(fluidObject)]),
-  fadeIn: _propTypes.default.bool,
-  durationFadeIn: _propTypes.default.number,
-  title: _propTypes.default.string,
-  alt: _propTypes.default.string,
-  className: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object]),
+  fixed: _propTypes["default"].oneOfType([fixedObject, _propTypes["default"].arrayOf(fixedObject)]),
+  fluid: _propTypes["default"].oneOfType([fluidObject, _propTypes["default"].arrayOf(fluidObject)]),
+  fadeIn: _propTypes["default"].bool,
+  durationFadeIn: _propTypes["default"].number,
+  title: _propTypes["default"].string,
+  alt: _propTypes["default"].string,
+  className: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].object]),
   // Support Glamor's css prop.
-  critical: _propTypes.default.bool,
-  crossOrigin: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.bool]),
-  style: _propTypes.default.object,
-  imgStyle: _propTypes.default.object,
-  placeholderStyle: _propTypes.default.object,
-  placeholderClassName: _propTypes.default.string,
-  backgroundColor: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.bool]),
-  onLoad: _propTypes.default.func,
-  onError: _propTypes.default.func,
-  onStartLoad: _propTypes.default.func,
-  Tag: _propTypes.default.string,
-  itemProp: _propTypes.default.string,
-  loading: _propTypes.default.oneOf(["auto", "lazy", "eager"]),
-  draggable: _propTypes.default.bool
+  critical: _propTypes["default"].bool,
+  crossOrigin: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].bool]),
+  style: _propTypes["default"].object,
+  imgStyle: _propTypes["default"].object,
+  placeholderStyle: _propTypes["default"].object,
+  placeholderClassName: _propTypes["default"].string,
+  backgroundColor: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].bool]),
+  onLoad: _propTypes["default"].func,
+  onError: _propTypes["default"].func,
+  onStartLoad: _propTypes["default"].func,
+  Tag: _propTypes["default"].string,
+  itemProp: _propTypes["default"].string,
+  loading: _propTypes["default"].oneOf(["auto", "lazy", "eager"]),
+  draggable: _propTypes["default"].bool
 };
 var _default = Image;
-exports.default = _default;
+exports["default"] = _default;
